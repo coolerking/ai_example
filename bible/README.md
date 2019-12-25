@@ -6,7 +6,7 @@ Webスクレイピングによるコーパス抽出サンプル
 [聖書：新約聖書・旧約聖書（英語訳併記）サイト]: http://bible.e-lesson1.com/
 [スクレイピング]: https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0
 
-# beautifulsoup4
+## beautifulsoup4
 
 プログラム内でPythonのwebスクレイピングライブラリである [beautiful4] パッケージを使用しています。
 XPath にちかい使い方をします。
@@ -15,13 +15,14 @@ XPath にちかい使い方をします。
 
 [beautiful4]: http://kondou.com/BS4/
 
-# 実行方法
+## 実行方法
 
 以下の手順で実行してください。
 
 ```Python
 pip install bs4
 python bible.py
-python bible_utils.py```
+python bible_utils.py
+```
 
 本プログラムを実行すると１回で何度も [聖書：新約聖書・旧約聖書（英語訳併記）サイト] へアクセススルことになります。注意してください。

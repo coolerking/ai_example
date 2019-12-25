@@ -30,13 +30,15 @@ Ctrl+C を押し、run_application.py を停止する。
 ```docker``` コマンドが使用可能な状態で、以下のコマンドを実行する。
 
 
-```$ git clone http://pandagit.exa-corp.co.jp/git/89004/ai_samples.git
+```bash
+$ git clone http://pandagit.exa-corp.co.jp/git/89004/ai_samples.git
 $ cd ai_sample/wakati
 $ sudo docker build .
   → 完成したイメージIDをメモしておく
 
 $ sudo docker run -d -p 3333:3000 --name=wakati イメージID先頭3文字
-  → http://ホスト側IPアドレス:3333/ をブラウザで開く```
+  → http://ホスト側IPアドレス:3333/ をブラウザで開く
+```
 
 ```-p 3333:3000``` は、ポート番号3000番でコンテナ側がlistenしている状態で、ホスト側ポート番号を3333で使いたい場合に指定する。
 

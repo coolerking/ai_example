@@ -4,8 +4,8 @@
 
 TensorFlow チュートリアルの"Deep MNIST for Expoerts"に記述されているコードを集約したものです。
 
-```
-$ python mnist_expert.py
+```bash
+python mnist_expert.py
 ```
 
 で実行可能です。
@@ -19,14 +19,13 @@ $ python mnist_expert.py
 Floyd Hub アカウントを取得してログインし、クライアントPC上のPython実行環境上で `pip install floyd` してから、Floyd Hubコンソール上で"mnist"という名前でプロジェクトを新規起動して、以下の操作を行ってください。
 
 
-```
+```bash
 (C:\.. Anaconda3) C:\ ..ai_samples> cd mnist
 (C:\.. Anaconda3) C:\ ..mnist> floyd login
 ※ブラウザが上がるのでそこのセキュリティコードをペーストしてEnter
 
 (C:\.. Anaconda3) C:\ ..mnist> floyd init mnist
 (C:\.. Anaconda3) C:\ ..mnist> floyd run --cpu --env tensorflow-1.3 "python mnist_expert.py"
-
 ```
 
 ## 実行時間目安

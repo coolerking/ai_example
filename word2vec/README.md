@@ -27,4 +27,3 @@ jawiki.model 作成方法については ml/store/HowToCreate_jawiki.model.md �
 ## 停止方法
 
 Ctrl+C を押し、run_application.py を停止する。
-
