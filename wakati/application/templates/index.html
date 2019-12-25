@@ -1,0 +1,54 @@
+<!-- tornado&vueを使った初期画面テンプレート -->
+<!-- 中括弧２連続：python tornado 側のテンプレート -->
+<!-- 中括弧％: vue.js 側のテンプレート -->
+
+<!-- (C) Tasuku Hori, exa Corporation Japan, 2017. all rights reserved. -->
+
+<!-- base.html をベースフォーマットに使用 -->
+<!-- ちなみにbase.html上以外のHTMLコメントはクライアントへ送信されない -->
+
+{% extends "base.html" %}
+
+<!-- title ブロック -->
+
+{% block title %}分かち書き{% end %}
+
+<!-- header ブロック -->
+
+{% block header %}
+<!-- 本ページ内でAjaxを使用 -->
+<!-- axios は vue推奨のAjaxライブラリ https://github.com/mzabriskie/axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{% end %}
+
+<!-- content ブロック -->
+
+{% block content %}
+<h1>分かち書き</h1>
+<form>
+    <!-- このdiv内がVueインスタンス取扱対象となる -->
+    <div id="app">
+        分かち書き前文書：<br />
+        <!-- v-model指定により入力値と data.wakati_input が連携される -->
+        <textarea rows="10" wrap="soft" placeholder="ここに文章を入力してください。" v-model="wakati_input" autofocus></textarea>
+        <br />
+        <!-- v-on:click(クリック時) に methods内のupdate関数を呼び出す -->
+        <button type="button" name="実行" v-on:click="update(wakati_input)">実行</button>
+        <!-- 実は、クリア指定のためだけにformで囲んでいる -->
+        <button type="clear">クリア</button>
+        <br />
+        分かち書き済文書：<br />
+        <!-- v-model指定により出力値と data.wakati_output が連携される -->
+        <textarea rows="10" wrap="soft" v-model="wakati_output" readonly></textarea>
+    </div>
+    {% raw xsrf_form_html() %}
+</form>
+{% end %}
+
+<!-- footer ブロック -->
+
+{% block footer %}
+<!-- この位置にしないと動かなかった -->
+<!-- index.js 内に vue & axios によるボタン押下時の処理を記述 -->
+<script type="text/javascript" src="{{ static_url('js/index.js') }}"></script>
+{% end %}

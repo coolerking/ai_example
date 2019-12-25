@@ -1,0 +1,56 @@
+<!-- tornado&vueを使った初期画面テンプレート -->
+<!-- 中括弧２連続：python tornado 側のテンプレート -->
+<!-- 中括弧％: vue.js 側のテンプレート -->
+
+<!-- (C) Tasuku Hori, exa Corporation Japan, 2017. all rights reserved. -->
+
+<!-- base.html をベースフォーマットに使用 -->
+<!-- ちなみにbase.html上以外のHTMLコメントはクライアントへ送信されない -->
+
+{% extends "base.html" %}
+
+<!-- title ブロック -->
+
+{% block title %}Word2vec: 類似語検索{% end %}
+
+<!-- header ブロック -->
+
+{% block header %}
+<!-- 本ページ内でAjaxを使用 -->
+<!-- axios は vue推奨のAjaxライブラリ https://github.com/mzabriskie/axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{% end %}
+
+<!-- content ブロック -->
+
+{% block content %}
+<h1>類似語検索</h1>
+<form>
+    <!-- このdiv内がVueインスタンス取扱対象となる -->
+    <div id="app">
+        検索対象語：<br />
+        <!-- v-model指定により入力値と data.wakati_input が連携される -->
+        <input type="text" wrap="soft" v-model="word2vec_input" autofocus>
+        <br />
+        <!-- v-on:click(クリック時) に methods内のupdate関数を呼び出す -->
+        <button type="button" name="実行" v-on:click="update(word2vec_input)">実行</button>
+        <!-- 実は、クリア指定のためだけにformで囲んでいる -->
+        <button type="clear">クリア</button>
+        <br />
+        検索結果：<br />
+        <!--  -->
+        <ol>
+            <word2vec-word v-for="word in word2vec_output" v-bind:word2vec="word"></word2vec-word>
+        </ol>
+    </div>
+    {% raw xsrf_form_html() %}
+</form>
+{% end %}
+
+<!-- footer ブロック -->
+
+{% block footer %}
+<!-- この位置にしないと動かなかった -->
+<!-- index.js 内に vue & axios によるボタン押下時の処理を記述 -->
+<script type="text/javascript" src="{{ static_url('js/index.js') }}"></script>
+{% end %}

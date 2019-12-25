@@ -1,0 +1,186 @@
+1.次のコードを確認してください。
+
+public class Sequence { 
+  Sequence() { System.out.print("c "); } 
+  { System.out.print("y "); } 
+  public static void main(String[] args) { 
+    new Sequence().go(); 
+  } 
+  void go() { System.out.print("g "); } 
+  static { System.out.print("x "); } 
+}
+
+このコードを実行すると、どのような結果になりますか。
+
+A.    c x y g
+B.    c g x y
+C.    x c y g
+D.    x y c g
+E.    y x c g
+F.    y c g x
+
+
+2.次のコードを確認してください。
+
+public class MyStuff {
+  MyStuff(String n) { name = n; }
+  String name;
+  public static void main(String[] args) {
+    MyStuff m1 = new MyStuff("guitar");
+    MyStuff m2 = new MyStuff("tv");
+    System.out.println(m2.equals(m1));
+  }
+  public boolean equals(Object o) {
+    MyStuff m = (MyStuff) o;
+    if(m.name != null)
+    return true;
+return false;
+  }
+}
+
+このコードを実行すると、どのような結果になりますか。
+
+A. trueが出力される。MyStuffはObject.equals()メソッドの規約を満たしている。
+B. falseが出力される。MyStuffはObject.equals()メソッドの規約を満たしている。
+C. trueが出力される。MyStuffはObject.equals()メソッドの規約を満たしていない。
+D. falseが出力される。MyStuffはObject.equals()メソッドの規約を満たしていない。
+E. コンパイルに失敗する。
+
+
+3.次のコードを確認してください。
+
+import java.util.*;
+public class Primes {
+  public static void main(String[] args) {
+    List p = new ArrayList();
+    p.add(7);
+    p.add(2);
+    p.add(5);
+    p.add(2);
+    p.sort(); 
+    System.out.println(p);
+  }
+}
+
+このコードを実行すると、どのような結果になりますか。
+
+A.    [2, 5, 7]
+B.    [2, 2, 5, 7]
+C.    [7, 2, 5, 2]
+D.    [7, 5, 2, 2]
+E.    コンパイルに失敗する。
+
+
+4.次のコードを確認してください。
+
+public class MyLoop { 
+  public static void main(String[] args) { 
+    String[] sa = {"tom ", "jerry "}; 
+    for(int x = 0; x < 3; x++) { 
+      for(String s: sa) { 
+        System.out.print(x + " " + s); 
+        if( x == 1) break; 
+      } 
+    } 
+  } 
+} 
+
+このコードを実行すると、どのような結果になりますか。
+
+A.    0 tom 0 jerry 1 tom
+B.    0 tom 0 jerry 1 tom 1 jerry
+C.    0 tom 0 jerry 2 tom 2 jerry
+D.    0 tom 0 jerry 1 tom 2 tom 2 jerry
+E.    0 tom 0 jerry 1 tom 1 jerry 2 tom 2 jerry
+F.    コンパイルに失敗する。
+
+
+5.次のコードを確認してください。
+
+interface Rideable {
+  String getGait();
+}
+public class Camel implements Rideable {
+  int weight = 2;
+public static void main(String[] args) {
+new Camel().go(8);
+}
+void go(int speed) {
+++speed;
+weight++;
+int walkrate = speed * weight;
+System.out.print(walkrate + getGait());
+}
+String getGait() {
+return " mph, lope";
+}
+}
+
+このコードを実行すると、どのような結果になりますか。
+
+A.    16 mph, lope
+B.    18 mph, lope
+C.    24 mph, lope
+D.    27 mph, lope
+E.    コンパイルに失敗する。
+F.    実行時に例外がスローされる。
+
+
+6.次のコードを確認してください。
+
+class Alpha {
+  String getType() { return "alpha"; }
+}
+class Beta extends Alpha {
+  String getType() { return "beta"; }
+}
+class Gamma extends Beta {
+  String getType() { return "gamma"; }
+ 
+  public static void main(String[] args) {
+    Gamma g1 = new Alpha();
+    Gamma g2 = new Beta();
+    System.out.println(g1.getType() + " " 
+                       + g2.getType());
+  }
+}
+
+このコードを実行すると、どのような結果になりますか。
+
+A.    alpha beta
+B.    beta beta
+C.    gamma gamma
+D.    alpha alpha
+E.    コンパイルに失敗する。
+
+
+7.次のコードを確認してください。
+
+class Feline {
+  public String type = "f ";
+  public Feline() {
+    System.out.print("feline ");
+  }
+}
+public class Cougar extends Feline {
+  public Cougar() {
+    System.out.print("cougar "); 
+  }
+  public static void main(String[] args) {
+    new Cougar().go();
+  }
+  void go() {
+    type = "c ";
+    System.out.print(this.type + super.type);
+  }
+}
+
+このコードを実行すると、どのような結果になりますか。
+
+A.    cougar c c
+B.    cougar c f
+C.    feline cougar c c
+D.    feline cougar c f
+E.    コンパイルに失敗する。
+F.    実行時に例外がスローされる。
+
