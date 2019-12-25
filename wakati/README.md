@@ -31,7 +31,7 @@ Ctrl+C を押し、run_application.py を停止する。
 
 
 ```bash
-$ git clone http://pandagit.exa-corp.co.jp/git/89004/ai_samples.git
+$ git clone https://github.com/coolerking/ai_example.git
 $ cd ai_sample/wakati
 $ sudo docker build .
   → 完成したイメージIDをメモしておく
